@@ -1,0 +1,45 @@
+{
+  "id": "doubao-batch-asr",
+  "name": "Doubao Batch ASR",
+  "version": "0.3.0",
+  "registration_url": "",
+  "description": "## 使用流程\n\n1. **创建应用**：在[旧版控制台](https://console.volcengine.com/speech/service/9)创建应用并开通视频字幕服务，获取 APPID 和 Access Token。\n2. **配置插件**：在 Omni Code 中 API Key 字段填入 Access Token，APPID 字段填入应用标识。",
+  "api_key_label": "Access Token",
+  "setting_fields": [
+    {
+      "key": "model",
+      "label": "APPID",
+      "help": "火山引擎旧版控制台的应用标识。",
+      "placeholder": "your_appid",
+      "required": true,
+      "capabilities": ["batch_asr"]
+    },
+    {
+      "key": "resource_id",
+      "label": "Language",
+      "help": "识别语种，默认 zh-CN。",
+      "placeholder": "zh-CN",
+      "required": false,
+      "options": [
+        { "value": "zh-CN", "label": "中文普通话" },
+        { "value": "yue", "label": "粤语" },
+        { "value": "en-US", "label": "英语" },
+        { "value": "ja-JP", "label": "日语" },
+        { "value": "ko-KR", "label": "韩语" }
+      ],
+      "capabilities": ["batch_asr"]
+    }
+  ],
+  "capabilities": ["batch_asr"],
+  "capability_configs": {
+    "batch_asr": {
+      "base_url": "https://openspeech.bytedance.com",
+      "auth_header": "Authorization",
+      "auth_scheme": "Bearer;",
+      "path": "/api/v1/vc/submit?appid=${model}&language=${language}&use_itn=True&max_lines=1&words_per_line=15",
+      "poll_path": "/api/v1/vc/query?appid=${model}&id=${task_id}",
+      "request_content_type": "audio/wav",
+      "response_text_path": "utterances.0.text"
+    }
+  }
+}

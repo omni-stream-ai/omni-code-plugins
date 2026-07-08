@@ -1,0 +1,49 @@
+{
+  "id": "doubao-realtime-asr",
+  "name": "Doubao Realtime ASR",
+  "version": "0.3.0",
+  "registration_url": "https://console.volcengine.com/speech/new/setting/apikeys",
+  "description": "流式语音识别，需配置 API Key 和 Resource ID。\n\n## 使用流程\n\n1. **开通模型**：在[火山引擎语音识别控制台](https://console.volcengine.com/speech/service/16)开通实时语音识别模型（如流式语音识别模型 2.0 或 SeedASR）。\n2. **获取 API Key**：在[API Key 管理页面](https://console.volcengine.com/speech/new/setting/apikeys)创建并复制 API Key。\n3. **获取 Resource ID**：在控制台购买成功后，获取对应的 Resource ID（如 `volc.bigasr.sauc.duration`）。\n4. **配置插件**：在 Omni Code 中粘贴 API Key 并选择对应的 Resource ID。",
+  "setting_fields": [
+    {
+      "key": "resource_id",
+      "label": "Resource ID",
+      "placeholder": "volc.bigasr.sauc.duration",
+      "help": "Sent as X-Api-Resource-Id. Choose the exact edition purchased in the Volcengine speech console.",
+      "required": true,
+      "options": [
+        {
+          "value": "volc.bigasr.sauc.duration",
+          "label": "流式语音识别模型 1.0 - 小时版",
+          "help": "Resource ID: volc.bigasr.sauc.duration"
+        },
+        {
+          "value": "volc.bigasr.sauc.concurrent",
+          "label": "流式语音识别模型 1.0 - 并发版",
+          "help": "Resource ID: volc.bigasr.sauc.concurrent"
+        },
+        {
+          "value": "volc.seedasr.sauc.duration",
+          "label": "流式语音识别模型 2.0 - 小时版",
+          "help": "Resource ID: volc.seedasr.sauc.duration"
+        },
+        {
+          "value": "volc.seedasr.sauc.concurrent",
+          "label": "流式语音识别模型 2.0 - 并发版",
+          "help": "Resource ID: volc.seedasr.sauc.concurrent"
+        }
+      ],
+      "capabilities": ["realtime_asr"]
+    }
+  ],
+  "capabilities": ["realtime_asr"],
+  "capability_configs": {
+    "realtime_asr": {
+      "websocket_url": "wss://openspeech.bytedance.com/api/v3/sauc/bigmodel_async",
+      "model": "bigmodel",
+      "event_map": {
+        "protocol": "volcengine_sauc"
+      }
+    }
+  }
+}
