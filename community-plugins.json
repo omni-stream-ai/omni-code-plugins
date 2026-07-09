@@ -9,7 +9,7 @@
       "registration_url": "",
       "description": "火山引擎视频字幕识别，需旧版控制台 APPID 和 Access Token",
       "manifest_path": "plugins/doubao-batch-asr/manifest.json",
-      "capabilities": ["batch_asr"]
+      "capabilities": ["speech.batch_asr"]
     },
     {
       "id": "doubao-tts",
@@ -19,7 +19,7 @@
       "registration_url": "https://console.volcengine.com/speech/new/setting/apikeys",
       "description": "火山引擎流式语音合成",
       "manifest_path": "plugins/doubao-tts/manifest.json",
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     },
     {
       "id": "doubao-realtime-asr",
@@ -29,7 +29,7 @@
       "registration_url": "https://console.volcengine.com/speech/new/setting/apikeys",
       "description": "火山引擎流式语音识别",
       "manifest_path": "plugins/doubao-realtime-asr/manifest.json",
-      "capabilities": ["realtime_asr"]
+      "capabilities": ["speech.realtime_asr"]
     }
   ]
 }

@@ -33,12 +33,12 @@
           "help": "Resource ID: volc.seedasr.sauc.concurrent"
         }
       ],
-      "capabilities": ["realtime_asr"]
+      "capabilities": ["speech.realtime_asr"]
     }
   ],
-  "capabilities": ["realtime_asr"],
+  "capabilities": ["speech.realtime_asr"],
   "capability_configs": {
-    "realtime_asr": {
+    "speech.realtime_asr": {
       "websocket_url": "wss://openspeech.bytedance.com/api/v3/sauc/bigmodel_async",
       "model": "bigmodel",
       "event_map": {

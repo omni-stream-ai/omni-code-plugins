@@ -22,7 +22,7 @@
           "help": "Resource ID: seed-icl-2.0"
         }
       ],
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     },
     {
       "key": "resource_id",
@@ -30,12 +30,12 @@
       "help": "音色 ID，从控制台 > 音色库获取。",
       "placeholder": "zh_female_tianmei",
       "required": true,
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     }
   ],
-  "capabilities": ["tts"],
+  "capabilities": ["speech.tts"],
   "capability_configs": {
-    "tts": {
+    "speech.tts": {
       "base_url": "https://openspeech.bytedance.com",
       "model": "seed-tts-2.0",
       "auth_header": "X-Api-Key",

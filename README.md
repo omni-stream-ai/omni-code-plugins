@@ -12,9 +12,9 @@ Community plugin repository for [Omni Code](https://github.com/omni-stream-ai/om
 
 | Plugin | Capabilities | Description |
 |--------|-------------|-------------|
-| Doubao Batch ASR | `batch_asr` | Volcengine video caption / batch speech recognition |
-| Doubao TTS | `tts` | Volcengine streaming text-to-speech synthesis |
-| Doubao Realtime ASR | `realtime_asr` | Volcengine real-time streaming speech recognition |
+| Doubao Batch ASR | `speech.batch_asr` | Volcengine video caption / batch speech recognition |
+| Doubao TTS | `speech.tts` | Volcengine streaming text-to-speech synthesis |
+| Doubao Realtime ASR | `speech.realtime_asr` | Volcengine real-time streaming speech recognition |
 
 ## Repository Structure
 

@@ -12,9 +12,9 @@ Create a `manifest.json`:
   "name": "My Plugin",
   "version": "0.1.0",
   "description": "## Usage\n\n1. ...\n2. ...",
-  "capabilities": ["tts"],
+  "capabilities": ["speech.tts"],
   "capability_configs": {
-    "tts": {
+    "speech.tts": {
       "base_url": "https://api.example.com",
       "path": "/v1/audio/speech"
     }
@@ -34,7 +34,7 @@ Register it in `community-plugins.json`:
       "author": "you",
       "description": "Brief one-line description",
       "manifest_path": "plugins/my-plugin/manifest.json",
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     }
   ]
 }
@@ -54,7 +54,7 @@ Register it in `community-plugins.json`:
 | `api_key_label` | string | no | Custom label for the API key field. Default: `"API Key"`. Example: `"Access Token"` |
 | `requires_api_key` | bool | no | Show the API key field. Default: `true`. Set to `false` to hide |
 | `service_commands` | object | no | Start/stop commands for local services. `{"start": "cmd", "stop": "cmd"}` shows buttons instead of text fields |
-| `capabilities` | array | yes | `["batch_asr"]`, `["tts"]`, `["realtime_asr"]`, or combinations |
+| `capabilities` | array | yes | `["speech.batch_asr"]`, `["speech.tts"]`, `["speech.realtime_asr"]`, or combinations |
 | `capability_configs` | object | yes | Per-capability transport and API configuration (see below) |
 | `setting_fields` | array | no | Custom configuration fields |
 
@@ -64,7 +64,7 @@ Override settings for a specific capability. Keyed by capability name.
 
 ```json
 "capability_configs": {
-  "batch_asr": {
+  "speech.batch_asr": {
     "base_url": "https://api.example.com",
     "path": "/v1/transcriptions",
     "model": "whisper-1",
@@ -165,14 +165,14 @@ Custom configuration fields shown in the plugin's settings card.
       { "value": "seed-tts-2.0", "label": "TTS 2.0" },
       { "value": "seed-icl-2.0", "label": "ICL 2.0" }
     ],
-    "capabilities": ["tts"]
+    "capabilities": ["speech.tts"]
   },
   {
     "key": "resource_id",
     "label": "Speaker",
     "help": "Timbre ID from the console.",
     "placeholder": "zh_female_tianmei",
-    "capabilities": ["tts"]
+    "capabilities": ["speech.tts"]
   }
 ]
 ```
@@ -239,7 +239,7 @@ Three auth modes:
       "registration_url": "https://console.example.com",
       "description": "Brief one-line summary for the selector",
       "manifest_path": "plugins/my-plugin/manifest.json",
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     }
   ]
 }

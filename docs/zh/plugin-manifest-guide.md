@@ -12,9 +12,9 @@
   "name": "My Plugin",
   "version": "0.1.0",
   "description": "## 使用流程\n\n1. ...\n2. ...",
-  "capabilities": ["tts"],
+  "capabilities": ["speech.tts"],
   "capability_configs": {
-    "tts": {
+    "speech.tts": {
       "base_url": "https://api.example.com",
       "path": "/v1/audio/speech"
     }
@@ -34,7 +34,7 @@
       "author": "you",
       "description": "一句简短描述",
       "manifest_path": "plugins/my-plugin/manifest.json",
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     }
   ]
 }
@@ -54,7 +54,7 @@
 | `api_key_label` | string | 否 | API Key 输入框的自定义标签。默认 `"API Key"`。如填写 Access Token 可设为 `"Access Token"` |
 | `requires_api_key` | bool | 否 | 是否显示 API Key 输入字段。默认 `true`，设为 `false` 则隐藏 |
 | `service_commands` | object | 否 | 本地服务的启停命令。`{"start": "命令", "stop": "命令"}` 显示为按钮而非文本输入 |
-| `capabilities` | array | 是 | 能力列表：`["batch_asr"]`、`["tts"]`、`["realtime_asr"]`，可组合 |
+| `capabilities` | array | 是 | 能力列表：`["speech.batch_asr"]`、`["speech.tts"]`、`["speech.realtime_asr"]`，可组合 |
 | `capability_configs` | object | 是 | 按能力配置传输方式和 API 参数（见下文） |
 | `setting_fields` | array | 否 | 自定义配置字段 |
 
@@ -64,7 +64,7 @@
 
 ```json
 "capability_configs": {
-  "batch_asr": {
+  "speech.batch_asr": {
     "base_url": "https://api.example.com",
     "path": "/v1/transcriptions",
     "model": "whisper-1",
@@ -165,14 +165,14 @@ body 中支持 `${text}` 和 `${speaker}` 变量。响应中的 `data` 字段包
       { "value": "seed-tts-2.0", "label": "豆包语音合成 2.0" },
       { "value": "seed-icl-2.0", "label": "豆包声音复刻 2.0" }
     ],
-    "capabilities": ["tts"]
+    "capabilities": ["speech.tts"]
   },
   {
     "key": "resource_id",
     "label": "Speaker",
     "help": "从控制台音色库获取的音色 ID。",
     "placeholder": "zh_female_tianmei",
-    "capabilities": ["tts"]
+    "capabilities": ["speech.tts"]
   }
 ]
 ```
@@ -239,7 +239,7 @@ body 中支持 `${text}` 和 `${speaker}` 变量。响应中的 `data` 字段包
       "registration_url": "https://console.example.com",
       "description": "插件选择器中显示的一句话摘要",
       "manifest_path": "plugins/my-plugin/manifest.json",
-      "capabilities": ["tts"]
+      "capabilities": ["speech.tts"]
     }
   ]
 }

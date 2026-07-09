@@ -12,7 +12,7 @@
       "help": "火山引擎旧版控制台的应用标识。",
       "placeholder": "your_appid",
       "required": true,
-      "capabilities": ["batch_asr"]
+      "capabilities": ["speech.batch_asr"]
     },
     {
       "key": "resource_id",
@@ -27,12 +27,12 @@
         { "value": "ja-JP", "label": "日语" },
         { "value": "ko-KR", "label": "韩语" }
       ],
-      "capabilities": ["batch_asr"]
+      "capabilities": ["speech.batch_asr"]
     }
   ],
-  "capabilities": ["batch_asr"],
+  "capabilities": ["speech.batch_asr"],
   "capability_configs": {
-    "batch_asr": {
+    "speech.batch_asr": {
       "base_url": "https://openspeech.bytedance.com",
       "auth_header": "Authorization",
       "auth_scheme": "Bearer;",
