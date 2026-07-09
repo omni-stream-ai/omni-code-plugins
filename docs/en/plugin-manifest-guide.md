@@ -12,6 +12,12 @@ Create a `manifest.json`:
   "name": "My Plugin",
   "version": "0.1.0",
   "description": "## Usage\n\n1. ...\n2. ...",
+  "localized": {
+    "zh": {
+      "name": "我的插件",
+      "description": "## 使用流程\n\n1. ...\n2. ..."
+    }
+  },
   "capabilities": ["speech.tts"],
   "capability_configs": {
     "speech.tts": {
@@ -34,6 +40,12 @@ Register it in `community-plugins.json`:
       "author": "you",
       "description": "Brief one-line description",
       "manifest_path": "plugins/my-plugin/manifest.json",
+      "localized": {
+        "zh": {
+          "name": "我的插件",
+          "description": "一句简短描述"
+        }
+      },
       "capabilities": ["speech.tts"]
     }
   ]
@@ -54,6 +66,7 @@ Register it in `community-plugins.json`:
 | `api_key_label` | string | no | Custom label for the API key field. Default: `"API Key"`. Example: `"Access Token"` |
 | `requires_api_key` | bool | no | Show the API key field. Default: `true`. Set to `false` to hide |
 | `service_commands` | object | no | Start/stop commands for local services. `{"start": "cmd", "stop": "cmd"}` shows buttons instead of text fields |
+| `localized` | object | no | Locale-specific UI strings. Keys are locale tags such as `"zh"` or `"zh-CN"` |
 | `capabilities` | array | yes | `["speech.batch_asr"]`, `["speech.tts"]`, `["speech.realtime_asr"]`, or combinations |
 | `capability_configs` | object | yes | Per-capability transport and API configuration (see below) |
 | `setting_fields` | array | no | Custom configuration fields |
@@ -161,8 +174,18 @@ Custom configuration fields shown in the plugin's settings card.
     "help": "Select the model version.",
     "required": true,
     "placeholder": "ep-xxx",
+    "localized": {
+      "zh": {
+        "label": "模型",
+        "help": "选择模型版本。"
+      }
+    },
     "options": [
-      { "value": "seed-tts-2.0", "label": "TTS 2.0" },
+      {
+        "value": "seed-tts-2.0",
+        "label": "TTS 2.0",
+        "localized": { "zh": { "label": "语音合成 2.0" } }
+      },
       { "value": "seed-icl-2.0", "label": "ICL 2.0" }
     ],
     "capabilities": ["speech.tts"]
@@ -186,6 +209,26 @@ Custom configuration fields shown in the plugin's settings card.
 | `placeholder` | string | Placeholder text |
 | `options` | array | Dropdown options with `value`, `label`, `help` |
 | `capabilities` | array | Which capabilities this field applies to |
+| `localized` | object | Locale-specific `label`, `help`, and `placeholder` values |
+
+## Localization
+
+Manifest objects, repository entries, setting fields, and setting options can include `localized`:
+
+```json
+"localized": {
+  "zh": {
+    "name": "我的插件",
+    "description": "中文说明",
+    "label": "模型",
+    "help": "选择模型版本。",
+    "placeholder": "ep-xxx",
+    "api_key_label": "Access Token"
+  }
+}
+```
+
+Omni Code first matches the full locale tag, such as `zh-CN`, then the language code, such as `zh`, and finally falls back to the default field value.
 
 ## Variable Substitution
 
@@ -239,6 +282,12 @@ Three auth modes:
       "registration_url": "https://console.example.com",
       "description": "Brief one-line summary for the selector",
       "manifest_path": "plugins/my-plugin/manifest.json",
+      "localized": {
+        "zh": {
+          "name": "我的插件",
+          "description": "插件选择器摘要"
+        }
+      },
       "capabilities": ["speech.tts"]
     }
   ]

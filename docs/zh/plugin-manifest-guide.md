@@ -12,6 +12,12 @@
   "name": "My Plugin",
   "version": "0.1.0",
   "description": "## 使用流程\n\n1. ...\n2. ...",
+  "localized": {
+    "zh": {
+      "name": "我的插件",
+      "description": "## 使用流程\n\n1. ...\n2. ..."
+    }
+  },
   "capabilities": ["speech.tts"],
   "capability_configs": {
     "speech.tts": {
@@ -34,6 +40,12 @@
       "author": "you",
       "description": "一句简短描述",
       "manifest_path": "plugins/my-plugin/manifest.json",
+      "localized": {
+        "zh": {
+          "name": "我的插件",
+          "description": "一句简短描述"
+        }
+      },
       "capabilities": ["speech.tts"]
     }
   ]
@@ -54,6 +66,7 @@
 | `api_key_label` | string | 否 | API Key 输入框的自定义标签。默认 `"API Key"`。如填写 Access Token 可设为 `"Access Token"` |
 | `requires_api_key` | bool | 否 | 是否显示 API Key 输入字段。默认 `true`，设为 `false` 则隐藏 |
 | `service_commands` | object | 否 | 本地服务的启停命令。`{"start": "命令", "stop": "命令"}` 显示为按钮而非文本输入 |
+| `localized` | object | 否 | 多语言 UI 文案。key 为 `"zh"`、`"zh-CN"` 这类 locale tag |
 | `capabilities` | array | 是 | 能力列表：`["speech.batch_asr"]`、`["speech.tts"]`、`["speech.realtime_asr"]`，可组合 |
 | `capability_configs` | object | 是 | 按能力配置传输方式和 API 参数（见下文） |
 | `setting_fields` | array | 否 | 自定义配置字段 |
@@ -161,8 +174,18 @@ body 中支持 `${text}` 和 `${speaker}` 变量。响应中的 `data` 字段包
     "help": "选择模型版本。",
     "required": true,
     "placeholder": "ep-xxx",
+    "localized": {
+      "zh": {
+        "label": "模型",
+        "help": "选择模型版本。"
+      }
+    },
     "options": [
-      { "value": "seed-tts-2.0", "label": "豆包语音合成 2.0" },
+      {
+        "value": "seed-tts-2.0",
+        "label": "TTS 2.0",
+        "localized": { "zh": { "label": "豆包语音合成 2.0" } }
+      },
       { "value": "seed-icl-2.0", "label": "豆包声音复刻 2.0" }
     ],
     "capabilities": ["speech.tts"]
@@ -186,6 +209,26 @@ body 中支持 `${text}` 和 `${speaker}` 变量。响应中的 `data` 字段包
 | `placeholder` | string | 占位文字 |
 | `options` | array | 下拉选项，每项包含 `value`、`label`、`help` |
 | `capabilities` | array | 该字段适用于哪些能力 |
+| `localized` | object | 本字段的多语言 `label`、`help`、`placeholder` |
+
+## 多语言
+
+manifest、索引条目、配置字段、下拉选项都可以添加 `localized`：
+
+```json
+"localized": {
+  "zh": {
+    "name": "我的插件",
+    "description": "中文说明",
+    "label": "模型",
+    "help": "选择模型版本。",
+    "placeholder": "ep-xxx",
+    "api_key_label": "Access Token"
+  }
+}
+```
+
+Omni Code 会先匹配完整 locale tag（如 `zh-CN`），再匹配语言代码（如 `zh`），找不到时回退到默认字段值。
 
 ## 变量替换
 
@@ -239,6 +282,12 @@ body 中支持 `${text}` 和 `${speaker}` 变量。响应中的 `data` 字段包
       "registration_url": "https://console.example.com",
       "description": "插件选择器中显示的一句话摘要",
       "manifest_path": "plugins/my-plugin/manifest.json",
+      "localized": {
+        "zh": {
+          "name": "我的插件",
+          "description": "插件选择器中显示的一句话摘要"
+        }
+      },
       "capabilities": ["speech.tts"]
     }
   ]

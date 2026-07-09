@@ -3,29 +3,65 @@
   "name": "Doubao Batch ASR",
   "version": "0.3.0",
   "registration_url": "",
-  "description": "## 使用流程\n\n1. **创建应用**：在[旧版控制台](https://console.volcengine.com/speech/service/9)创建应用并开通视频字幕服务，获取 APPID 和 Access Token。\n2. **配置插件**：在 Omni Code 中 API Key 字段填入 Access Token，APPID 字段填入应用标识。",
+  "description": "## Usage\n\n1. **Create an application**: create an app in the [legacy console](https://console.volcengine.com/speech/service/9), enable the video caption service, then copy the APPID and Access Token.\n2. **Configure the plugin**: enter the Access Token in the API Key field and the APPID in the APPID field.",
   "api_key_label": "Access Token",
+  "localized": {
+    "zh": {
+      "description": "## 使用流程\n\n1. **创建应用**：在[旧版控制台](https://console.volcengine.com/speech/service/9)创建应用并开通视频字幕服务，获取 APPID 和 Access Token。\n2. **配置插件**：在 Omni Code 中 API Key 字段填入 Access Token，APPID 字段填入应用标识。"
+    }
+  },
   "setting_fields": [
     {
       "key": "model",
       "label": "APPID",
-      "help": "火山引擎旧版控制台的应用标识。",
+      "help": "Application ID from the Volcengine legacy console.",
       "placeholder": "your_appid",
       "required": true,
+      "localized": {
+        "zh": {
+          "help": "火山引擎旧版控制台的应用标识。"
+        }
+      },
       "capabilities": ["speech.batch_asr"]
     },
     {
       "key": "resource_id",
       "label": "Language",
-      "help": "识别语种，默认 zh-CN。",
+      "help": "Recognition language. Defaults to zh-CN.",
       "placeholder": "zh-CN",
       "required": false,
+      "localized": {
+        "zh": {
+          "label": "语种",
+          "help": "识别语种，默认 zh-CN。"
+        }
+      },
       "options": [
-        { "value": "zh-CN", "label": "中文普通话" },
-        { "value": "yue", "label": "粤语" },
-        { "value": "en-US", "label": "英语" },
-        { "value": "ja-JP", "label": "日语" },
-        { "value": "ko-KR", "label": "韩语" }
+        {
+          "value": "zh-CN",
+          "label": "Mandarin Chinese",
+          "localized": { "zh": { "label": "中文普通话" } }
+        },
+        {
+          "value": "yue",
+          "label": "Cantonese",
+          "localized": { "zh": { "label": "粤语" } }
+        },
+        {
+          "value": "en-US",
+          "label": "English",
+          "localized": { "zh": { "label": "英语" } }
+        },
+        {
+          "value": "ja-JP",
+          "label": "Japanese",
+          "localized": { "zh": { "label": "日语" } }
+        },
+        {
+          "value": "ko-KR",
+          "label": "Korean",
+          "localized": { "zh": { "label": "韩语" } }
+        }
       ],
       "capabilities": ["speech.batch_asr"]
     }

@@ -3,23 +3,43 @@
   "name": "Doubao TTS",
   "version": "0.3.0",
   "registration_url": "https://console.volcengine.com/speech/new/setting/apikeys",
-  "description": "## 使用流程\n\n1. **获取 API Key**：在[API Key 管理页面](https://console.volcengine.com/speech/new/setting/apikeys)创建并复制 API Key。\n2. **选择音色**：在[音色库](https://console.volcengine.com/speech/new/voices)选择合适的音色，复制音色 ID（如 `zh_female_tianmei`）。\n3. **配置插件**：在 Omni Code 中粘贴 API Key，选择模型版本并填写音色 ID。",
+  "description": "## Usage\n\n1. **Get an API Key**: create and copy an API Key from the [API Key page](https://console.volcengine.com/speech/new/setting/apikeys).\n2. **Choose a voice**: pick a voice in the [Voice Library](https://console.volcengine.com/speech/new/voices), then copy its voice ID, for example `zh_female_tianmei`.\n3. **Configure the plugin**: paste the API Key in Omni Code, choose a model version, and enter the voice ID.",
+  "localized": {
+    "zh": {
+      "description": "## 使用流程\n\n1. **获取 API Key**：在[API Key 管理页面](https://console.volcengine.com/speech/new/setting/apikeys)创建并复制 API Key。\n2. **选择音色**：在[音色库](https://console.volcengine.com/speech/new/voices)选择合适的音色，复制音色 ID（如 `zh_female_tianmei`）。\n3. **配置插件**：在 Omni Code 中粘贴 API Key，选择模型版本并填写音色 ID。"
+    }
+  },
   "setting_fields": [
     {
       "key": "model",
       "label": "Model",
-      "help": "选择模型版本，对应 X-Api-Resource-Id。",
+      "help": "Choose the model version. This is sent as X-Api-Resource-Id.",
       "required": true,
+      "localized": {
+        "zh": {
+          "help": "选择模型版本，对应 X-Api-Resource-Id。"
+        }
+      },
       "options": [
         {
           "value": "seed-tts-2.0",
-          "label": "豆包语音合成大模型 2.0",
-          "help": "Resource ID: seed-tts-2.0"
+          "label": "Doubao TTS 2.0",
+          "help": "Resource ID: seed-tts-2.0",
+          "localized": {
+            "zh": {
+              "label": "豆包语音合成大模型 2.0"
+            }
+          }
         },
         {
           "value": "seed-icl-2.0",
-          "label": "豆包声音复刻大模型 2.0",
-          "help": "Resource ID: seed-icl-2.0"
+          "label": "Doubao Voice Clone 2.0",
+          "help": "Resource ID: seed-icl-2.0",
+          "localized": {
+            "zh": {
+              "label": "豆包声音复刻大模型 2.0"
+            }
+          }
         }
       ],
       "capabilities": ["speech.tts"]
@@ -27,9 +47,14 @@
     {
       "key": "resource_id",
       "label": "Speaker",
-      "help": "音色 ID，从控制台 > 音色库获取。",
+      "help": "Voice ID from Console > Voice Library.",
       "placeholder": "zh_female_tianmei",
       "required": true,
+      "localized": {
+        "zh": {
+          "help": "音色 ID，从控制台 > 音色库获取。"
+        }
+      },
       "capabilities": ["speech.tts"]
     }
   ],
